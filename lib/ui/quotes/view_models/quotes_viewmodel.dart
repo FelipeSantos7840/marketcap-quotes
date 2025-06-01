@@ -16,7 +16,6 @@ class QuotesViewmodel extends GetxController {
   searchCoinQuotes(String searchedRaw) async {
     _isLoading.value = true;
     searchedRaw = validateSearchText(searchedRaw);
-    print('LOG 1 | $searchedRaw');
     final response = await quoteRepository.getCurrentQuoteCoinsBySymbol(
       searchedRaw,
     );

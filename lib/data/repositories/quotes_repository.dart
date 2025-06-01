@@ -11,7 +11,6 @@ class QuotesRepository {
     final requestData = await quotesDatasource.getQuotasLatest(searchedRaw);
     final Map<String, List<Coin>> coinQuotes = {};
     List<String> searchedCoins = InputParse.convertSearchRequest(searchedRaw);
-    print('LOG 2 | Fez a request');
     if (requestData == null) {
       return {};
     }
@@ -27,7 +26,6 @@ class QuotesRepository {
           });
         }
       }
-      print('${searchedSymbol} | ${coinQuotes[searchedSymbol]!.length}');
     });
     return coinQuotes;
   }
