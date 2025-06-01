@@ -13,7 +13,7 @@ class CoinCard extends StatelessWidget {
         leading: Icon(Icons.monetization_on),
         title: Text(coin.name),
         subtitle: Text(
-          '${coin.symbol} \nUSD: ${coin.quote.price.toStringAsFixed(2)}\nBRL: ${(coin.quote.price * 5.72).toStringAsFixed(2)}\nAtualização: ${coin.quote.last_updated.toLocal()}',
+          '${coin.symbol} \nUSD: \$${coin.quote.price.toStringAsFixed(2)}\nBRL: R\$${(coin.quote.price * 5.72).toStringAsFixed(2)}\nAtualização: ${coin.quote.last_updated.toLocal()}',
         ),
         onTap: () => showCoinDialog(context),
       ),
@@ -23,7 +23,9 @@ class CoinCard extends StatelessWidget {
   void showCoinDialog(BuildContext context) {
     showDialog(context: context, builder: (_) => AlertDialog(
       title: Text(coin.name),
-      content: Text('Símbolo: ${coin.symbol}\n'),
+      content: Text(
+        'Símbolo: ${coin.symbol}\nNome: ${coin.name}\nOrigem: ${coin.date_added}\nCotação:\n USD \$${coin.quote.price.toStringAsFixed(2)}\n BRL R\$${(coin.quote.price * 5.72).toStringAsFixed(2)}'
+        ),
     ));
   }
 }

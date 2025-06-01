@@ -42,7 +42,7 @@ class Coin {
       symbol: map['symbol'] as String,
       slug: map['slug'] as String,
       is_active: map['is_active'] as int,
-      quote: Quote.fromMap(map['quote'] as Map<String,dynamic>),
+      quote: Quote.fromMap(map['quote']['USD'] as Map<String,dynamic>),
       date_added: DateTime.parse(map['date_added']),
     );
   }
