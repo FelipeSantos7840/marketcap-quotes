@@ -1,5 +1,6 @@
 import 'package:crypto_felipesantos/data/datasources/quotes_datasource.dart';
 import 'package:crypto_felipesantos/data/repositories/quotes_repository.dart';
+import 'package:crypto_felipesantos/domain/entities/coin.dart';
 import 'package:crypto_felipesantos/ui/quotes/view_models/quotes_viewmodel.dart';
 import 'package:crypto_felipesantos/ui/quotes/widgets/quote_result.dart';
 import 'package:crypto_felipesantos/ui/quotes/widgets/quote_search.dart';
@@ -42,8 +43,10 @@ class _QuotesPageState extends State<QuotesPage> {
               onSearch: _quotesViewmodel.searchCoinQuotes,
             ),
             Obx((){
-              final coinMap = _quotesViewmodel.quotesLatest.value;
-              return Expanded(child: QuoteResult(quotesMap: coinMap));
+              final coinMap = _quotesViewmodel.quotesLatest.value as Map<String, List<Coin>>;
+              return _quotesViewmodel.isLoading.value ?
+              Center(child: CircularProgressIndicator()):  
+              Expanded(child: QuoteResult(quotesMap: coinMap));
             })
           ],
         ),
