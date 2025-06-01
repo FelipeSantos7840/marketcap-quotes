@@ -32,7 +32,7 @@ class _QuotesPageState extends State<QuotesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Aplicativo Crypto')),
+      appBar: AppBar(title: Text('Market Cap - Felipe dos Santos')),
       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -42,8 +42,8 @@ class _QuotesPageState extends State<QuotesPage> {
               onSearch: _quotesViewmodel.searchCoinQuotes,
             ),
             Obx((){
-              final coinMap = _quotesViewmodel.quotesLatest;
-              return QuoteResult(quotesMap: );
+              final coinMap = _quotesViewmodel.quotesLatest.value;
+              return Expanded(child: QuoteResult(quotesMap: coinMap));
             })
           ],
         ),

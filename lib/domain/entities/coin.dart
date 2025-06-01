@@ -10,6 +10,7 @@ class Coin {
   final String slug;
   final int is_active;
   final Quote quote;
+  final DateTime date_added;
   
   Coin({
     required this.id,
@@ -18,6 +19,7 @@ class Coin {
     required this.slug,
     required this.is_active,
     required this.quote,
+    required this.date_added
   });
 
 
@@ -29,6 +31,7 @@ class Coin {
       'slug': slug,
       'is_active': is_active,
       'quote': quote.toMap(),
+      'date_added': date_added.millisecondsSinceEpoch,
     };
   }
 
@@ -39,16 +42,12 @@ class Coin {
       symbol: map['symbol'] as String,
       slug: map['slug'] as String,
       is_active: map['is_active'] as int,
-      quote: Quote.fromMap(map['quote']['USD'] as Map<String,dynamic>),
+      quote: Quote.fromMap(map['quote'] as Map<String,dynamic>),
+      date_added: DateTime.parse(map['date_added']),
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory Coin.fromJson(String source) => Coin.fromMap(json.decode(source) as Map<String, dynamic>);
-
-  @override
-  String toString() {
-    return 'Coin(id: $id, name: $name, symbol: $symbol, slug: $slug, is_active: $is_active, quote: $quote)';
-  }
 }
