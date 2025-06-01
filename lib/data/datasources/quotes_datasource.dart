@@ -6,6 +6,7 @@ class QuotesDatasource {
   QuotesDatasource({required this.dio});
 
   getQuotasLatest (String filterQuota) async {
+    try{
     final result = await dio.get(
       'https://pro-api.coinmarketcap.com/v2/cryptocurrency/quotes/latest?symbol=$filterQuota',
       options: Options(
@@ -18,5 +19,8 @@ class QuotesDatasource {
       return result.data['data'];
     }
     return null;
+    } catch (e) {
+      return null;
+    }
   }
 }
