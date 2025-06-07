@@ -44,16 +44,20 @@ Siga os passos abaixo para gerar o aplicativo:
 
 2. **Instale as dependências do projeto:**
 
+    ```bash
     flutter pub get
 
 3. **Execute localmente em modo debug (emulador ou dispositivo conectado):**
 
+    ```bash
     flutter run
 
 4. **Gere o APK para Android (modo release):**
 
+    ```bash
     flutter build apk --release
 
 5. **Localize o arquivo gerado:**
 
+    ```bash
     build/app/outputs/flutter-apk/app-release.apk
